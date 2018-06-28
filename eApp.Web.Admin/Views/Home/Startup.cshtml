@@ -1,0 +1,48 @@
+﻿
+
+
+<div class="row">
+    <div class="box box-solid">
+        <hr />
+    </div>
+</div>
+
+<style>
+    #example_filter {
+        display: none;
+    }
+
+    div.slider {
+        display: none;
+    }
+
+    pre {
+        font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        border: none;
+        white-space: pre-wrap;
+        background-color: #fff;
+    }
+
+    option:empty {
+        display: none;
+    }
+
+    .nNoo {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    .cap {
+        text-transform: uppercase;
+    }
+</style>
+
+@if(ViewBag.pageOf == "admin")
+{
+    @Html.Partial("/Views/Home/Form/_admin.cshtml")
+}
+
+else if(ViewBag.pageOf == "driver")
+{
+    @Html.Partial("/Views/Home/Form/_driver.cshtml")
+}

@@ -1,0 +1,199 @@
+﻿
+
+<style>
+    .labelX {
+        margin-right: 10px !important;
+        margin-top: -8px !important;
+    }
+
+    .badge {
+        font-size: 75% !important;
+        border-top-left-radius: 70px !important;
+        border-bottom-left-radius: 70px !important;
+        border-top-right-radius: 70px !important;
+        border-bottom-right-radius: 0px !important;
+        padding: 3px 7px !important;
+        margin-top: -15px !important;
+    }
+</style>
+
+
+<div class="row">
+
+    <div class="col-md-9">
+        <div class="box box-primary">
+
+            <div class="box-body" style="overflow: hidden">
+                <div id="mapdiv" style="background-color: none; height: 500px;"></div>
+            </div><!-- /.box-body -->
+        </div><!-- /. box -->
+    </div><!-- /.col -->
+    <div class="col-md-3">
+        <div class="box box-solid">
+            <div class="box-header with-border">
+                <h4 class="box-title">User Issue Statistics</h4>
+            </div>
+            <div class="box-body no-padding chart-responsive">
+                <div class="chart" id="rank-chart" style="height: 150px; position: relative;"></div>
+            </div>
+        </div>
+        <div class="box box-solid">
+            <div class="box-header with-border">
+                <h4 class="box-title">Monitoring Statistics</h4>
+            </div>
+            <div class="box-body no-padding">
+
+            </div><!-- /.box-body -->
+        </div><!-- /. box -->
+
+    </div><!-- /.col -->
+</div><!-- /.row -->
+
+<link href="~/Scripts/Javascript/plugins/ammap/ammap.css" rel="stylesheet" />
+<script src="~/Scripts/Javascript/plugins/ammap/ammap.js"></script>
+<script src="~/Scripts/Javascript/plugins/ammap/maps/js/saudiArabiaLow.js"></script>
+
+<!-- Morris charts -->
+<link rel="stylesheet" href="~/Scripts/Javascript/plugins/morris/morris.css">
+<!-- Morris.js charts -->
+<script src="~/Scripts/Javascript/plugins/morris/raphael.js"></script>
+<script src="~/Scripts/Javascript/plugins/morris/morris.min.js"></script>
+
+<script>
+
+    $(function () {
+
+        new Morris.Donut({
+            element: 'rank-chart',
+            resize: true,
+            colors: ["#0073b7", "#ff851b", "#ffc0cb"],
+            data: [
+                { label: "Major Issue", value: 10 },
+                { label: "Minor Issue", value: 22 },
+                { label: "Request", value: 3 }
+            ],
+            hideHover: 'auto'
+        });
+
+
+        $.notify({
+            message: 'New! Change Status and Assign to User. Please kindly check..',
+        }, {
+                type: 'warning',
+                placement: {
+                    from: 'top',
+                    align: 'right'
+                },
+                offset: {
+                    x: 10,
+                    y: 10
+                },
+                animate: {
+                    enter: 'animated fadeInDown',
+                    exit: 'animated fadeOutUp'
+                },
+                template: '<div data-notify="container" class="col-xs-4 col-sm-4 alert alert-{0}" role="alert">' +
+                '<button type="button" aria-hidden="true" class="close" data-notify="dismiss">×</button>' +
+                '<span data-notify="icon"></span> ' +
+                '<span data-notify="title">{1}</span> ' +
+                '<span data-notify="message">{2}</span>' +
+                '<div class="progress" data-notify="progressbar">' +
+                '<div class="progress-bar progress-bar-{0}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>' +
+                '</div>' +
+                '<a href="{3}" target="{4}" data-notify="url"></a>' +
+                '</div>'
+            });
+
+        var targetSVG = "M9,0C4.029,0,0,4.029,0,9s4.029,9,9,9s9-4.029,9-9S13.971,0,9,0z M9,15.93 c-3.83,0-6.93-3.1-6.93-6.93S5.17,2.07,9,2.07s6.93,3.1,6.93,6.93S12.83,15.93,9,15.93 M12.5,9c0,1.933-1.567,3.5-3.5,3.5S5.5,10.933,5.5,9S7.067,5.5,9,5.5 S12.5,7.067,12.5,9z";
+
+        var map = AmCharts.makeChart("mapdiv", {
+            type: "map",
+
+            projection: "miller",
+            imagesSettings: {
+                rollOverColor: "#CC0000",
+                rollOverScale: 3,
+                selectedScale: 3,
+                selectedColor: "#ffc0cb"
+            },
+            balloon: {
+                color: "#000000"
+            },
+            areasSettings: {
+                outlineThickness: 1,
+                autoZoom: true,
+                selectedColor: "#605ca8",
+                unlistedAreasColor: "#DDDDDD",
+                rollOverOutlineColor: "#FFFFFF",
+                rollOverColor: "#605ca8",
+                balloonText: "[[title]] had [[customData]] issue or request"
+            },
+
+            dataProvider: {
+                map: "saudiArabiaLow",
+                getAreasFromMap: true,
+                areas: [{
+                    title: "Riyadh",
+                    id: "SA-01",
+                    color: "#3366CC",
+                    customData: "53%",
+                    groupId: "c1",
+                    description: "Riyadh is now selected.</br></br>Close this description box to unselect the area.",
+                    svgPath: targetSVG,
+                    zoomLevel: 5,
+                    scale: 0.5,                    
+                    //latitude: 24.6748,
+                    //longitude: 46.6977
+                }, {
+                    title: "Jeddah",
+                    id: "SA-02",
+                    color: "#3366CC",
+                    customData: "53%",
+                    groupId: "c1",
+                    description: "Jeddah is now selected.</br></br>Close this description box to unselect the area.",
+                    svgPath: targetSVG,
+                    zoomLevel: 5,
+                    scale: 0.5,                    
+                }, {
+                    title: "Madinah",
+                    id: "SA-03",
+                    color: "#3366CC",
+                    customData: "46%",
+                    groupId: "c1"
+                }, {
+                    title: "Khobar",
+                    id: "SA-04",
+                    color: "#3366CC",
+                    customData: "38%",
+                    groupId: "c1"
+                }]
+
+            },
+            showImagesInList: true,
+            legend: {
+                width: 600,
+                backgroundAlpha: 0.5,
+                backgroundColor: "#FFFFFF",
+                borderColor: "#666666",
+                borderAlpha: 1,
+                bottom: 10,
+                right: 15,                
+                horizontalGap: 10,
+                data: [{
+                    title: "More Request",
+                    color: "#3366CC"
+                }, {
+                    title: "Minor Issue",
+                    color: "#FFCC33"
+                }, {
+                    title: "Major Issue",
+                    color: "#66CC99"
+                }]
+            }
+        });
+
+
+    });
+
+
+</script>

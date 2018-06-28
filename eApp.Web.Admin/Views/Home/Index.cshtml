@@ -1,0 +1,101 @@
+﻿@Html.Partial("_header")
+
+
+<body class="hold-transition skin-purple sidebar-mini fixed">
+
+
+    <section class="wrapper">
+
+        <header class="main-header">
+            
+            <a href="#" class="logo">
+              
+                <img src="~/Content/img/logo.png" style="margin-top: 12px;" class="img-responsive" />
+            </a>
+            
+            <nav class="navbar navbar-static-top" role="navigation">
+                
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control input-sm" id="navbar-search-input" style="color: #000; width: 350px; margin-top: 2px" placeholder="Search">
+                    </div>
+                </form>
+
+                
+                <div class="navbar-custom-menu">
+
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="/Account/SelectedCurrentRole" target="_self" class="s"><i class="fa fa-exchange"></i></a>
+                        </li>
+
+                        <li style="padding: 5px; padding-top: 15px !important; color: #85849c">
+                            <span> | </span>
+                        </li>
+
+                        <li>
+                            <a href="/supp/password" class="p"><i class="fa fa-key"></i><span class="label label-danger">!</span></a>
+                        </li>
+
+                        <li style="padding: 5px; padding-top: 15px !important; color: #85849c">
+                            <span> | </span>
+                        </li>
+
+                        <li>
+                            <a href="" ng-click="logout()" target="_self" class="s"><i class="fa fa-sign-out"></i></a>
+                        </li>
+                        <li>
+                            <a href=""></a>
+                        </li>
+
+
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        @Html.Partial("_sidebar")
+
+        <section class="content-wrapper">
+
+            <!-- Main content  -->
+            <section class="content">
+                <div class="box box-solid" ng-show="iform.isViewLoading">
+                    <div class="box-body padding">
+                        <!-- left column -->
+                        <div class="col-md-6">
+                            <h4>
+                                
+                                <span class="heartX pull-left"></span>
+                                <span class="heartXX pull-left"></span>
+                                <span style="margin-left: -5px; margin-top: 3px; font-size: 12px">Please wait...</span>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div ng-view ng-hide="iform.isViewLoading"></div>
+
+            </section>
+        </section>
+
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                <b>Version</b> 1.0
+            </div>
+            <strong>Copyright &copy; 2016 - 2017 <a href="http://DanubeCo.com">Danube Co. Ltd.</a> All rights reserved.</strong>
+        </footer>
+
+    </section><!-- ./wrapper -->
+
+    @Html.Partial("_footer")
+
+</body>
+</html>
+
+
+

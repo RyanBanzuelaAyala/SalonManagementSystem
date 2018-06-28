@@ -1,0 +1,29 @@
+﻿
+<!DOCTYPE html>
+<html ng-app="Log" ng-controller="LoginController">
+
+@Html.Partial("_header")
+
+<body class="hold-transition login-page">
+    <div class="login-box">
+
+        <div class="login-box-body text-center">
+            <hr />
+            <span class="label bg-red midtext">
+                Your Session State is expired.
+            </span>
+            <hr />
+            <a href="/Account/Login" class="btn btn-default btn-xs">Sign-In</a>
+        </div><!-- loader -->
+    </div><!-- /.login-box -->
+
+    @Html.Partial("_footer")
+
+    <script>
+
+        window.location = "/Account/Login";
+
+    </script>
+</body>
+</html>
+

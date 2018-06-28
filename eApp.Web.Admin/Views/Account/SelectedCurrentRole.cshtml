@@ -1,0 +1,101 @@
+﻿
+<!DOCTYPE html>
+<html ng-app="Login" ng-controller="LoginController">
+
+@Html.Partial("_header")
+
+<body class="hold-transition login-page">
+
+    <style>
+        .login-box-body, .register-box-body {
+            background: none;
+        }
+
+        option:empty {
+            display: none;
+        }
+
+        .clrHR {
+            opacity: 0.3;
+            filter: alpha(opacity=50); /* For IE8 and earlier */
+        }
+
+        .clor {
+            color: #444;
+        }
+
+        .brd {
+            /*border-top-right-radius: 30px;
+            border-bottom-right-radius: 30px;
+            border-top-left-radius: 30px;
+            border-bottom-left-radius: 30px;*/
+            box-shadow: 5px 5px 50px #ddd
+        }
+
+        .xloader {
+            height: 16px;
+            width: 16px;
+            margin-top: 3px;
+        }
+    </style>
+
+    <div class="login-box">
+
+        <div class="login-box-body">
+
+            <hr class="clrHR" style="margin-top: 100px" />
+
+            <div class="form-group has-feedback">
+                <label class="clor">Select Account Role : </label>
+                <div class="input-group">
+                    <div class="input-group-btn">
+                        <select class="form-control validate" style="width: 100%" id="role">
+                            @foreach (var item in ViewBag.Role)
+                            {
+                                <option value="@item.role">@item.role</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            @if (ViewBag.Branch != null)
+            {
+                <hr class="clrHR" />
+
+                <div class="form-group has-feedback">
+                    <label class="clor">Select Branch : </label>
+                    <div class="input-group">
+                        <div class="input-group-btn">
+                            <select class="form-control validate" style="width: 100%" id="branch">
+                                @foreach (var item in ViewBag.Branch)
+                                {
+                                    <option value="@item.branchcode">@item.branchcode</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <input type="hidden" value="" id="branch" />
+            }
+
+            <hr class="clrHR" />
+
+            <div class="form-group has-feedback text-center">
+                <button type="submit" class="btn btn-default brd" ng-click="LoginRole()"> Continue... <i class="fa fa-sign-in"></i> </button>
+            </div>
+
+            <hr class="clrHR" />
+        </div>
+
+    </div>
+
+
+    @Html.Partial("_footer")
+
+    @Scripts.Render("~/bundles/Login")
+</body>
+</html>

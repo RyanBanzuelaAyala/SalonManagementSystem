@@ -1,0 +1,136 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.5 -->
+    <link rel="stylesheet" href="~/Content/bootstrap/bootstrap.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link href="~/Content/css/AdminLTE.css" rel="stylesheet" />
+    <!-- iCheck -->
+    <link rel="stylesheet" href="~/Scripts/Javascript/plugins/iCheck/square/purple.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="~/Content/css/skins/_all-skins.css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body class="hold-transition login-page" style="background-image: url('../../Content/img/danubet.jpg'); background-size: cover">
+
+    <style>
+        .login-box-body, .register-box-body {
+            background: none;
+        }
+
+        option:empty {
+            display: none;
+        }
+
+        .clrHR {
+            opacity: 0.3;
+            filter: alpha(opacity=50); /* For IE8 and earlier */
+        }
+
+        .clor {
+            color: #fff;
+        }
+
+        .brd {
+            /*border-top-right-radius: 30px;
+                border-bottom-right-radius: 30px;
+                border-top-left-radius: 30px;
+                border-bottom-left-radius: 30px;*/
+            box-shadow: 5px 5px 50px #ddd
+        }
+
+        .xloader {
+            height: 16px;
+            width: 16px;
+            margin-top: 3px;
+        }
+    </style>
+
+
+
+        <div class="login-box">
+
+            <div class="login-box-body">
+
+                <hr class="clrHR" style="margin-top: 150px" />
+
+
+                <div class="form-group has-feedback text-center">
+                    <h3 class="colorwhite">Sorry! Error encountered... </h3>
+                </div>
+
+                <hr class="clrHR" />
+
+                <div class="form-group has-feedback text-center">
+                    <a href="\" class="btn btn-default brd"> Go Back  </a>
+                </div>
+
+                <hr class="clrHR" />
+
+                <div class="form-group has-feedback text-center">
+                    <small>
+                        Action Error Page in : @Model.ActionName
+                    </small>
+                 
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- jQuery 2.1.4 -->
+    <script src="~/Scripts/Javascript/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <!-- Bootstrap 3.3.5 -->
+    <script src="~/Scripts/Javascript/bootstrap.min.js"></script>
+    <!-- SlimScroll -->
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-route.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script>
+
+
+</body>
+</html>
+
+
+
+@*@model System.Web.Mvc.HandleErrorInfo
+
+    @{
+        ViewBag.Title = "Error";
+    }
+
+    <hgroup class="title">
+        <h1 class="error">Error.</h1>
+        <h2 class="error">An error occurred while processing your request.</h2>
+    </hgroup>
+
+    <p>
+        Controller: @Model.ControllerName
+    </p>
+    <p>
+        Action: @Model.ActionName
+    </p>
+    <p>
+        Exception: @Model.Exception
+    </p>*@

@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html ng-app="Login" ng-controller="LoginController">
+
+@Html.Partial("_header")
+
+<body class="hold-transition login-page" style="background-image: url('../../Content/img/bg2.jpg'); background-size: cover;">
+                   
+    <style>
+        .login-box-body, .register-box-body {
+            background: none;
+        }
+
+        option:empty {
+            display: none;
+        }
+
+        .clrHR {
+            opacity: 1;
+            filter: alpha(opacity=90); /* For IE8 and earlier */
+        }
+
+        .clrHRx {
+            height: 10px;
+            margin-bottom: 5px;
+        }
+
+        .clor {
+            color: #444;
+        }
+
+        .brdRad {
+            border-radius: 15px;
+            
+        }
+
+        .brd {
+            /*border-top-right-radius: 30px;
+            border-bottom-right-radius: 30px;
+            border-top-left-radius: 30px;
+            border-bottom-left-radius: 30px;*/
+            box-shadow: 5px 5px 50px #ddd
+        }
+
+        .xloader {
+            height: 16px;
+            width: 16px;
+            margin-top: 3px;
+        }
+
+    </style>
+
+    <div class="login-box">
+
+        <div class="login-box-body">
+
+            <div style="margin-top: 100px"></div>
+
+
+            <div class="form-group has-feedback">
+
+                <input type="text" class="form-control brd brdRad validate" id="username" placeholder="USER ID" autocomplete="off">
+                <span class="fa fa-user form-control-feedback"></span>
+                <input type="hidden" value="JEDDAH" id="regg" />
+
+            </div>
+
+            <div class="form-group has-feedback">
+                <input type="password" class="form-control brd brdRad validate" id="password" placeholder="PASSWORD" ng-keydown="Process($event)">
+                <span class="fa fa-lock form-control-feedback"></span>
+            </div>
+
+            <hr class="clrHR clrHRx" />
+
+            <div class="form-group has-feedback text-center">
+                <button type="submit" class="btn btn-default brd brdRad" ng-click="Login()"> Sign-in <i class="fa fa-sign-in"></i> </button>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    @Html.Partial("_footer")
+
+    @Scripts.Render("~/bundles/Login")
+</body>
+</html>

@@ -1,0 +1,1073 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="dbsmappModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="_Role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="_User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Region" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="_UserClaim">
+          <Key>
+            <PropertyRef Name="UserClaimId" />
+          </Key>
+          <Property Name="UserClaimId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="_UserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="_UserRole">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="iproduct">
+          <Key>
+            <PropertyRef Name="itemcode" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="itemcode" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="barcode" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="modelno" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="serialno" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="arname" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="enname" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="arshortname" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="enshortname" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="size" Type="nvarchar" MaxLength="100" />
+          <Property Name="unit" Type="nvarchar" MaxLength="100" />
+          <Property Name="remarks" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="status" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="iproductprice">
+          <Key>
+            <PropertyRef Name="itemcode" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="itemcode" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="sellingprice" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="purchasingprice" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="vatprice" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="remarks" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="status" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="nservices">
+          <Key>
+            <PropertyRef Name="servicescode" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="servicescode" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="servicename" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="departmentid" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="nprice" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="sprice" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="minutes" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="hours" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="fixedcommission" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="remarks" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="status" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="nservicesproductprice">
+          <Key>
+            <PropertyRef Name="servicescode" />
+            <PropertyRef Name="itemcode" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="servicescode" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="itemcode" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="price" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="remarks" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="status" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="nservicesproducts">
+          <Key>
+            <PropertyRef Name="servicescode" />
+            <PropertyRef Name="itemcode" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="servicescode" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="itemcode" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="usage" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="remarks" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="status" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sdepartment">
+          <Key>
+            <PropertyRef Name="deptcode" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="deptcode" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="deptname" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="remarks" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="status" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sdepartmentservices">
+          <Key>
+            <PropertyRef Name="deptcode" />
+            <PropertyRef Name="servicecode" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="deptcode" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="servicecode" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="remarks" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="status" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="userapp">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userid" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="empid" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="role" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="status" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="login" Type="datetime" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="userappbranch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userid" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="branchcode" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="remarks" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="status" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="userapprole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userid" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="role" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="remarks" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="status" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="userappservices">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userid" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="servicecode" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="remarks" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="status" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="userappsession">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userid" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="role" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="status" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="xbranch">
+          <Key>
+            <PropertyRef Name="branchcode" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="branchcode" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="branchname" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="remarks" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="status" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="xbranchorders">
+          <Key>
+            <PropertyRef Name="ordercode" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="branchcode" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="servicecode" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ordercode" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="orderby" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="datecreated" Type="datetime" Nullable="false" />
+          <Property Name="approvedby" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="dateapproved" Type="datetime" Nullable="false" />
+          <Property Name="remarks" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="status" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="xbranchorderslist">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ordercode" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="itemcode" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="quantity" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="status" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="xbranchsales">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="branchcode" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="paymenttype" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="servicecode" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="servicecodediscount" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="totalamount" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="amountgiven" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="amountbalance" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="paymentcreated" Type="datetime" Nullable="false" />
+          <Property Name="serviceagentid" Type="datetime" Nullable="false" />
+          <Property Name="cashieragendid" Type="datetime" Nullable="false" />
+          <Property Name="remarks" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="status" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="xbranchstocks">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="branchcode" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="itemcode" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="quantityordered" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="quantityonhand" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="quantityused" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="lastdatemodified" Type="datetime" Nullable="false" />
+          <Property Name="remarks" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="status" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ysysphoto">
+          <Key>
+            <PropertyRef Name="imgcode" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="imgcode" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="picthmb" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="remarks" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="status" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo__UserClaim_dbo__User_UserId">
+          <End Role="_User" Type="Self._User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="_UserClaim" Type="Self._UserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="_User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="_UserClaim">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo__UserLogin_dbo__User_UserId">
+          <End Role="_User" Type="Self._User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="_UserLogin" Type="Self._UserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="_User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="_UserLogin">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo__UserRole_dbo__Role_RoleId">
+          <End Role="_Role" Type="Self._Role" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="_UserRole" Type="Self._UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="_Role">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="_UserRole">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo__UserRole_dbo__User_UserId">
+          <End Role="_User" Type="Self._User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="_UserRole" Type="Self._UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="_User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="_UserRole">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbsmappModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="_Role" EntityType="Self._Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="_User" EntityType="Self._User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="_UserClaim" EntityType="Self._UserClaim" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="_UserLogin" EntityType="Self._UserLogin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="_UserRole" EntityType="Self._UserRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="iproduct" EntityType="Self.iproduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="iproductprice" EntityType="Self.iproductprice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="nservices" EntityType="Self.nservices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="nservicesproductprice" EntityType="Self.nservicesproductprice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="nservicesproducts" EntityType="Self.nservicesproducts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sdepartment" EntityType="Self.sdepartment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sdepartmentservices" EntityType="Self.sdepartmentservices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="userapp" EntityType="Self.userapp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="userappbranch" EntityType="Self.userappbranch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="userapprole" EntityType="Self.userapprole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="userappservices" EntityType="Self.userappservices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="userappsession" EntityType="Self.userappsession" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="xbranch" EntityType="Self.xbranch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="xbranchorders" EntityType="Self.xbranchorders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="xbranchorderslist" EntityType="Self.xbranchorderslist" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="xbranchsales" EntityType="Self.xbranchsales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="xbranchstocks" EntityType="Self.xbranchstocks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ysysphoto" EntityType="Self.ysysphoto" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo__UserClaim_dbo__User_UserId" Association="Self.FK_dbo__UserClaim_dbo__User_UserId">
+            <End Role="_User" EntitySet="_User" />
+            <End Role="_UserClaim" EntitySet="_UserClaim" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo__UserLogin_dbo__User_UserId" Association="Self.FK_dbo__UserLogin_dbo__User_UserId">
+            <End Role="_User" EntitySet="_User" />
+            <End Role="_UserLogin" EntitySet="_UserLogin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo__UserRole_dbo__Role_RoleId" Association="Self.FK_dbo__UserRole_dbo__Role_RoleId">
+            <End Role="_Role" EntitySet="_Role" />
+            <End Role="_UserRole" EntitySet="_UserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo__UserRole_dbo__User_UserId" Association="Self.FK_dbo__UserRole_dbo__User_UserId">
+            <End Role="_User" EntitySet="_User" />
+            <End Role="_UserRole" EntitySet="_UserRole" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbsmappModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="C_Role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="C_User" Relationship="Self.C_UserRole" FromRole="C_Role" ToRole="C_User" />
+        </EntityType>
+        <EntityType Name="C_User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Region" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="C_UserClaim" Relationship="Self.FK_dbo__UserClaim_dbo__User_UserId" FromRole="C_User" ToRole="C_UserClaim" />
+          <NavigationProperty Name="C_UserLogin" Relationship="Self.FK_dbo__UserLogin_dbo__User_UserId" FromRole="C_User" ToRole="C_UserLogin" />
+          <NavigationProperty Name="C_Role" Relationship="Self.C_UserRole" FromRole="C_User" ToRole="C_Role" />
+        </EntityType>
+        <EntityType Name="C_UserClaim">
+          <Key>
+            <PropertyRef Name="UserClaimId" />
+          </Key>
+          <Property Name="UserClaimId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="C_User" Relationship="Self.FK_dbo__UserClaim_dbo__User_UserId" FromRole="C_UserClaim" ToRole="C_User" />
+        </EntityType>
+        <EntityType Name="C_UserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="C_User" Relationship="Self.FK_dbo__UserLogin_dbo__User_UserId" FromRole="C_UserLogin" ToRole="C_User" />
+        </EntityType>
+        <EntityType Name="iproduct">
+          <Key>
+            <PropertyRef Name="itemcode" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="itemcode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="barcode" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="modelno" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="serialno" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="arname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="enname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="arshortname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="enshortname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="size" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="unit" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="remarks" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="iproductprice">
+          <Key>
+            <PropertyRef Name="itemcode" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="itemcode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="sellingprice" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="purchasingprice" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="vatprice" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="remarks" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="nservice">
+          <Key>
+            <PropertyRef Name="servicescode" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="servicescode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="servicename" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="departmentid" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nprice" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="sprice" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="minutes" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="hours" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fixedcommission" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="remarks" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="nservicesproductprice">
+          <Key>
+            <PropertyRef Name="servicescode" />
+            <PropertyRef Name="itemcode" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="servicescode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="itemcode" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="price" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="remarks" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="nservicesproduct">
+          <Key>
+            <PropertyRef Name="servicescode" />
+            <PropertyRef Name="itemcode" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="servicescode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="itemcode" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="usage" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="remarks" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sdepartment">
+          <Key>
+            <PropertyRef Name="deptcode" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="deptcode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="deptname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="remarks" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sdepartmentservice">
+          <Key>
+            <PropertyRef Name="deptcode" />
+            <PropertyRef Name="servicecode" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="deptcode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="servicecode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="remarks" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="userapp">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userid" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="empid" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="role" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="login" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="userappbranch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userid" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="branchcode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="userapprole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userid" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="role" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="userappservice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userid" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="servicecode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="remarks" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="userappsession">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userid" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="role" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="xbranch">
+          <Key>
+            <PropertyRef Name="branchcode" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="branchcode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="branchname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="remarks" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="xbranchorder">
+          <Key>
+            <PropertyRef Name="ordercode" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="branchcode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="servicecode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ordercode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="orderby" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="datecreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="approvedby" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dateapproved" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="remarks" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="xbranchorderslist">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ordercode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="itemcode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="quantity" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="xbranchsale">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="branchcode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="paymenttype" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="servicecode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="servicecodediscount" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="totalamount" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="amountgiven" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="amountbalance" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="paymentcreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="serviceagentid" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="cashieragendid" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="remarks" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="xbranchstock">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="branchcode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="itemcode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="quantityordered" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="quantityonhand" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="quantityused" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="lastdatemodified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="remarks" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ysysphoto">
+          <Key>
+            <PropertyRef Name="imgcode" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="imgcode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="picthmb" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="remarks" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo__UserClaim_dbo__User_UserId">
+          <End Role="C_User" Type="Self.C_User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="C_UserClaim" Type="Self.C_UserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="C_UserClaim">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo__UserLogin_dbo__User_UserId">
+          <End Role="C_User" Type="Self.C_User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="C_UserLogin" Type="Self.C_UserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="C_UserLogin">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="C_UserRole">
+          <End Role="C_Role" Type="Self.C_Role" Multiplicity="*" />
+          <End Role="C_User" Type="Self.C_User" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="dbsmappEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="C_Role" EntityType="Self.C_Role" />
+          <EntitySet Name="C_User" EntityType="Self.C_User" />
+          <EntitySet Name="C_UserClaim" EntityType="Self.C_UserClaim" />
+          <EntitySet Name="C_UserLogin" EntityType="Self.C_UserLogin" />
+          <EntitySet Name="iproducts" EntityType="Self.iproduct" />
+          <EntitySet Name="iproductprices" EntityType="Self.iproductprice" />
+          <EntitySet Name="nservices" EntityType="Self.nservice" />
+          <EntitySet Name="nservicesproductprices" EntityType="Self.nservicesproductprice" />
+          <EntitySet Name="nservicesproducts" EntityType="Self.nservicesproduct" />
+          <EntitySet Name="sdepartments" EntityType="Self.sdepartment" />
+          <EntitySet Name="sdepartmentservices" EntityType="Self.sdepartmentservice" />
+          <EntitySet Name="userapps" EntityType="Self.userapp" />
+          <EntitySet Name="userappbranches" EntityType="Self.userappbranch" />
+          <EntitySet Name="userapproles" EntityType="Self.userapprole" />
+          <EntitySet Name="userappservices" EntityType="Self.userappservice" />
+          <EntitySet Name="userappsessions" EntityType="Self.userappsession" />
+          <EntitySet Name="xbranches" EntityType="Self.xbranch" />
+          <EntitySet Name="xbranchorders" EntityType="Self.xbranchorder" />
+          <EntitySet Name="xbranchorderslists" EntityType="Self.xbranchorderslist" />
+          <EntitySet Name="xbranchsales" EntityType="Self.xbranchsale" />
+          <EntitySet Name="xbranchstocks" EntityType="Self.xbranchstock" />
+          <EntitySet Name="ysysphotoes" EntityType="Self.ysysphoto" />
+          <AssociationSet Name="FK_dbo__UserClaim_dbo__User_UserId" Association="Self.FK_dbo__UserClaim_dbo__User_UserId">
+            <End Role="C_User" EntitySet="C_User" />
+            <End Role="C_UserClaim" EntitySet="C_UserClaim" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo__UserLogin_dbo__User_UserId" Association="Self.FK_dbo__UserLogin_dbo__User_UserId">
+            <End Role="C_User" EntitySet="C_User" />
+            <End Role="C_UserLogin" EntitySet="C_UserLogin" />
+          </AssociationSet>
+          <AssociationSet Name="C_UserRole" Association="Self.C_UserRole">
+            <End Role="C_Role" EntitySet="C_Role" />
+            <End Role="C_User" EntitySet="C_User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbsmappModelStoreContainer" CdmEntityContainer="dbsmappEntities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="dbsmappModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_Role">
+            <EntityTypeMapping TypeName="dbsmappModel.C_Role">
+              <MappingFragment StoreEntitySet="_Role">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_User">
+            <EntityTypeMapping TypeName="dbsmappModel.C_User">
+              <MappingFragment StoreEntitySet="_User">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_UserClaim">
+            <EntityTypeMapping TypeName="dbsmappModel.C_UserClaim">
+              <MappingFragment StoreEntitySet="_UserClaim">
+                <ScalarProperty Name="UserClaimId" ColumnName="UserClaimId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_UserLogin">
+            <EntityTypeMapping TypeName="dbsmappModel.C_UserLogin">
+              <MappingFragment StoreEntitySet="_UserLogin">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="iproducts">
+            <EntityTypeMapping TypeName="dbsmappModel.iproduct">
+              <MappingFragment StoreEntitySet="iproduct">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="itemcode" ColumnName="itemcode" />
+                <ScalarProperty Name="barcode" ColumnName="barcode" />
+                <ScalarProperty Name="modelno" ColumnName="modelno" />
+                <ScalarProperty Name="serialno" ColumnName="serialno" />
+                <ScalarProperty Name="arname" ColumnName="arname" />
+                <ScalarProperty Name="enname" ColumnName="enname" />
+                <ScalarProperty Name="arshortname" ColumnName="arshortname" />
+                <ScalarProperty Name="enshortname" ColumnName="enshortname" />
+                <ScalarProperty Name="size" ColumnName="size" />
+                <ScalarProperty Name="unit" ColumnName="unit" />
+                <ScalarProperty Name="remarks" ColumnName="remarks" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="iproductprices">
+            <EntityTypeMapping TypeName="dbsmappModel.iproductprice">
+              <MappingFragment StoreEntitySet="iproductprice">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="itemcode" ColumnName="itemcode" />
+                <ScalarProperty Name="sellingprice" ColumnName="sellingprice" />
+                <ScalarProperty Name="purchasingprice" ColumnName="purchasingprice" />
+                <ScalarProperty Name="vatprice" ColumnName="vatprice" />
+                <ScalarProperty Name="remarks" ColumnName="remarks" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="nservices">
+            <EntityTypeMapping TypeName="dbsmappModel.nservice">
+              <MappingFragment StoreEntitySet="nservices">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="servicescode" ColumnName="servicescode" />
+                <ScalarProperty Name="servicename" ColumnName="servicename" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="departmentid" ColumnName="departmentid" />
+                <ScalarProperty Name="nprice" ColumnName="nprice" />
+                <ScalarProperty Name="sprice" ColumnName="sprice" />
+                <ScalarProperty Name="minutes" ColumnName="minutes" />
+                <ScalarProperty Name="hours" ColumnName="hours" />
+                <ScalarProperty Name="fixedcommission" ColumnName="fixedcommission" />
+                <ScalarProperty Name="remarks" ColumnName="remarks" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="nservicesproductprices">
+            <EntityTypeMapping TypeName="dbsmappModel.nservicesproductprice">
+              <MappingFragment StoreEntitySet="nservicesproductprice">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="servicescode" ColumnName="servicescode" />
+                <ScalarProperty Name="itemcode" ColumnName="itemcode" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="remarks" ColumnName="remarks" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="nservicesproducts">
+            <EntityTypeMapping TypeName="dbsmappModel.nservicesproduct">
+              <MappingFragment StoreEntitySet="nservicesproducts">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="servicescode" ColumnName="servicescode" />
+                <ScalarProperty Name="itemcode" ColumnName="itemcode" />
+                <ScalarProperty Name="usage" ColumnName="usage" />
+                <ScalarProperty Name="remarks" ColumnName="remarks" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sdepartments">
+            <EntityTypeMapping TypeName="dbsmappModel.sdepartment">
+              <MappingFragment StoreEntitySet="sdepartment">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="deptcode" ColumnName="deptcode" />
+                <ScalarProperty Name="deptname" ColumnName="deptname" />
+                <ScalarProperty Name="remarks" ColumnName="remarks" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sdepartmentservices">
+            <EntityTypeMapping TypeName="dbsmappModel.sdepartmentservice">
+              <MappingFragment StoreEntitySet="sdepartmentservices">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="deptcode" ColumnName="deptcode" />
+                <ScalarProperty Name="servicecode" ColumnName="servicecode" />
+                <ScalarProperty Name="remarks" ColumnName="remarks" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userapps">
+            <EntityTypeMapping TypeName="dbsmappModel.userapp">
+              <MappingFragment StoreEntitySet="userapp">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="empid" ColumnName="empid" />
+                <ScalarProperty Name="role" ColumnName="role" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userappbranches">
+            <EntityTypeMapping TypeName="dbsmappModel.userappbranch">
+              <MappingFragment StoreEntitySet="userappbranch">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="branchcode" ColumnName="branchcode" />
+                <ScalarProperty Name="remarks" ColumnName="remarks" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userapproles">
+            <EntityTypeMapping TypeName="dbsmappModel.userapprole">
+              <MappingFragment StoreEntitySet="userapprole">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="role" ColumnName="role" />
+                <ScalarProperty Name="remarks" ColumnName="remarks" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userappservices">
+            <EntityTypeMapping TypeName="dbsmappModel.userappservice">
+              <MappingFragment StoreEntitySet="userappservices">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="servicecode" ColumnName="servicecode" />
+                <ScalarProperty Name="remarks" ColumnName="remarks" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userappsessions">
+            <EntityTypeMapping TypeName="dbsmappModel.userappsession">
+              <MappingFragment StoreEntitySet="userappsession">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="role" ColumnName="role" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="xbranches">
+            <EntityTypeMapping TypeName="dbsmappModel.xbranch">
+              <MappingFragment StoreEntitySet="xbranch">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="branchcode" ColumnName="branchcode" />
+                <ScalarProperty Name="branchname" ColumnName="branchname" />
+                <ScalarProperty Name="remarks" ColumnName="remarks" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="xbranchorders">
+            <EntityTypeMapping TypeName="dbsmappModel.xbranchorder">
+              <MappingFragment StoreEntitySet="xbranchorders">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="branchcode" ColumnName="branchcode" />
+                <ScalarProperty Name="servicecode" ColumnName="servicecode" />
+                <ScalarProperty Name="ordercode" ColumnName="ordercode" />
+                <ScalarProperty Name="orderby" ColumnName="orderby" />
+                <ScalarProperty Name="datecreated" ColumnName="datecreated" />
+                <ScalarProperty Name="approvedby" ColumnName="approvedby" />
+                <ScalarProperty Name="dateapproved" ColumnName="dateapproved" />
+                <ScalarProperty Name="remarks" ColumnName="remarks" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="xbranchorderslists">
+            <EntityTypeMapping TypeName="dbsmappModel.xbranchorderslist">
+              <MappingFragment StoreEntitySet="xbranchorderslist">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ordercode" ColumnName="ordercode" />
+                <ScalarProperty Name="itemcode" ColumnName="itemcode" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="xbranchsales">
+            <EntityTypeMapping TypeName="dbsmappModel.xbranchsale">
+              <MappingFragment StoreEntitySet="xbranchsales">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="branchcode" ColumnName="branchcode" />
+                <ScalarProperty Name="paymenttype" ColumnName="paymenttype" />
+                <ScalarProperty Name="servicecode" ColumnName="servicecode" />
+                <ScalarProperty Name="servicecodediscount" ColumnName="servicecodediscount" />
+                <ScalarProperty Name="totalamount" ColumnName="totalamount" />
+                <ScalarProperty Name="amountgiven" ColumnName="amountgiven" />
+                <ScalarProperty Name="amountbalance" ColumnName="amountbalance" />
+                <ScalarProperty Name="paymentcreated" ColumnName="paymentcreated" />
+                <ScalarProperty Name="serviceagentid" ColumnName="serviceagentid" />
+                <ScalarProperty Name="cashieragendid" ColumnName="cashieragendid" />
+                <ScalarProperty Name="remarks" ColumnName="remarks" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="xbranchstocks">
+            <EntityTypeMapping TypeName="dbsmappModel.xbranchstock">
+              <MappingFragment StoreEntitySet="xbranchstocks">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="branchcode" ColumnName="branchcode" />
+                <ScalarProperty Name="itemcode" ColumnName="itemcode" />
+                <ScalarProperty Name="quantityordered" ColumnName="quantityordered" />
+                <ScalarProperty Name="quantityonhand" ColumnName="quantityonhand" />
+                <ScalarProperty Name="quantityused" ColumnName="quantityused" />
+                <ScalarProperty Name="lastdatemodified" ColumnName="lastdatemodified" />
+                <ScalarProperty Name="remarks" ColumnName="remarks" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ysysphotoes">
+            <EntityTypeMapping TypeName="dbsmappModel.ysysphoto">
+              <MappingFragment StoreEntitySet="ysysphoto">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="imgcode" ColumnName="imgcode" />
+                <ScalarProperty Name="picthmb" ColumnName="picthmb" />
+                <ScalarProperty Name="remarks" ColumnName="remarks" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="C_UserRole" TypeName="dbsmappModel.C_UserRole" StoreEntitySet="_UserRole">
+            <EndProperty Name="C_Role">
+              <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="C_User">
+              <ScalarProperty Name="UserId" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

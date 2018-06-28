@@ -1,0 +1,70 @@
+﻿<!-- jQuery 2.1.4 -->
+<script src="~/Scripts/Javascript/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+<!-- Bootstrap 3.3.5 -->
+<script src="~/Scripts/Javascript/bootstrap.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<!-- SlimScroll -->
+<script src="~/Scripts/Javascript/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="~/Scripts/Javascript/plugins/fastclick/fastclick.min.js"></script>
+<!-- AdminLTE App -->
+<script src="~/Content/js/app.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="~/Content/js/demo.js"></script>
+
+@*<script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/angular-route.min.js"></script>*@
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-route.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+
+
+@if (ViewBag.Role.Contains("Administrator"))
+{
+    @Scripts.Render("~/bundles/dnb")
+}
+else
+{
+    @Scripts.Render("~/bundles/idnb")
+}
+
+
+<script>
+    var sessionTimeoutWarning = @Session.Timeout- 1;
+
+    var sTimeout = parseInt(sessionTimeoutWarning) * 60 * 1000;
+    setTimeout('SessionEnd()', sTimeout);
+
+    function SessionEnd() {
+        window.location = "/Account/SessionExpired";
+    }
+
+    $('#navbar-search-input').on('keyup change', function () {
+        $('#example').DataTable().search(
+            $('#navbar-search-input').val(),
+        ).draw();
+    });
+
+
+
+</script>
+
+
+<script src="~/Scripts/Javascript/plugins/notify/bootstrap-notify.min.js"></script>
+<link href="~/Scripts/Javascript/plugins/notify/animate.css" rel="stylesheet" />
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
+<link href="~/Scripts/Javascript/plugins/confirm/jquery-confirm.min.css" rel="stylesheet" />
+
+<link href="~/Scripts/Javascript/plugins/qtp/jquery.qtip.css" rel="stylesheet" />
+<script src="~/Scripts/Javascript/plugins/qtp/jquery.qtip.js"></script>
+
+<link href="~/Scripts/Javascript/plugins/printjs/print.min.css" rel="stylesheet" />
+<script src="~/Scripts/Javascript/plugins/printjs/print.min.js"></script>
+
+@*<link href="~/Scripts/Javascript/plugins/tip/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-light.min.css" rel="stylesheet" />
+    <link href="~/Scripts/Javascript/plugins/tip/css/tooltipster.bundle.css" rel="stylesheet" />
+    <script src="~/Scripts/Javascript/plugins/tip/js/tooltipster.bundle.js"></script>*@

@@ -1,0 +1,262 @@
+﻿
+
+
+<style>
+    pre {
+        font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        border: none;
+        white-space: pre-wrap;
+        background-color: #f9fafc;
+    }
+
+    .clpre {
+        background-color: #f9fafc;
+        border: none;
+        border-left: 1px solid #d2d6de;
+    }
+
+
+    option:empty {
+        display: none;
+    }
+
+    .nNoo {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+</style>
+
+
+
+<div class="row" ng-controller="ServicesController" id="ssc">
+
+    @if (ViewBag.Services != null)
+    {
+
+        <div class="col-md-9">
+
+
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <div class="form-group box-title bg-purple" style="padding: 10px 20px 10px 10px; margin-top: -130px; margin-left: -10px; border-bottom-right-radius: 30px">
+                        <h4 class="label no-padding"> Services Description </h4>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="box box-primary">
+
+                <hr />
+
+                <div class="box-body bg-white">
+
+                    <div class="col-md-6">
+
+                        <div class="form-group">
+                            <label><small class="">*</small>Services Code : </label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-dot-circle-o"></i></span>
+                                <input type="email" class="form-control validate" value="@ViewBag.Services.servicescode" placeholder="ex. hr001" readonly id="servicescode">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label><small class="">*</small>Services Name : </label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa  fa-dot-circle-o"></i></span>
+                                <input type="email" class="form-control validate" value="@ViewBag.Services.servicename" placeholder="ex. Haircut" id="servicename">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+
+                        <div class="form-group">
+                            <label><small class="">*</small>Description : </label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa  fa-dot-circle-o"></i></span>
+                                <input type="email" class="form-control validate" value="@ViewBag.Services.description" placeholder="ex. Haircut Services" id="description">
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+                <hr />
+
+                <div class="box-body bg-white">
+
+                    <div class="col-md-6">
+
+                        <div class="form-group">
+                            <label><small class="">*</small>Normal Price : </label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa  fa-dot-circle-o"></i></span>
+                                <input type="email" class="form-control validate" value="@ViewBag.Services.nprice" placeholder="ex. 75.00" id="nprice">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div class="form-group">
+                            <label><small class="">*</small>Selling Price : </label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-dot-circle-o"></i></span>
+                                <input type="email" class="form-control validate" value="@ViewBag.Services.sprice" placeholder="ex. 80.00" id="sprice">
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <hr />
+
+                <div class="box-body bg-white">
+
+                    <div class="col-md-6">
+
+                        <div class="form-group">
+                            <label><small class="">*</small>Fixed Commission : </label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-dot-circle-o"></i></span>
+                                <input type="email" class="form-control validate" value="@ViewBag.Services.fixedcommission" id="fixedcommission">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div class="form-group">
+                            <label><small class="">*</small>Remarks : </label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-dot-circle-o"></i></span>
+                                <input type="email" class="form-control validate" value="@ViewBag.Services.remarks" id="remarks">
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <hr />
+
+                <div class="box-body bg-white">
+
+                    <div class="col-md-6">
+
+
+                        <div class="form-group">
+                            <label><small class="">*</small>Hours : </label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa  fa-dot-circle-o"></i></span>
+                                <input type="email" class="form-control validate" value="@ViewBag.Services.hours" placeholder="ex. 2" id="hours">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div class="form-group">
+                            <label><small class="">*</small>Mins : </label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa  fa-dot-circle-o"></i></span>
+                                <input type="email" class="form-control validate" value="@ViewBag.Services.minutes" placeholder="ex. 30" id="minutes">
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <hr />
+
+                <div class="box-body">
+
+                    <div class="col-md-6">
+
+                        <div class="form-group">
+
+                            <button type="button" class="btn btn-default" onclick="angular.element(document.getElementById('ssc')).scope().Process();">Save Services Information</button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+
+        <div class="col-md-3">
+
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <div class="form-group box-title bg-purple" style="padding: 10px 20px 10px 10px; margin-top: -130px; margin-left: -10px; border-bottom-right-radius: 30px">
+                        <h4 class="label no-padding"> Services Image </h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box box-primary">
+               
+
+                <div class="box-body bg-white">
+
+                    <div class="col-md-12">
+
+                        <hr />
+
+                        <div class="form-group">
+
+                            @if (ViewBag.ServicesImg == null)
+                            {
+                                <img class="img-responsive" style="margin-left: auto; margin-right: auto;" src="~/Content/img/services.png" />
+                            }
+                            else
+                            {
+                                <img class="img-responsive" style="margin-left: auto; margin-right: auto;" src="~/Uploadpic/@("thmb" + @ViewBag.ServicesImg + ".jpg?date=" + DateTime.Now.ToString("ddyyhhmmss"))" />
+                            }
+                        </div>
+
+                        <hr />
+
+                        <div class="form-group">
+
+                            <label>Upload Photo : </label>
+                            <div class="input-group">
+                                <input id="imgInpX" type="file" class="upload" name="file" accept="image/jpeg" />
+                            </div>
+
+                        </div>
+
+                        <hr />
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    }
+
+</div>
+

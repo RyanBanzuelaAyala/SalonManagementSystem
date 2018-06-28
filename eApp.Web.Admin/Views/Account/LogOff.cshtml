@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html ng-app="Login" ng-controller="LoginController">
+
+@Html.Partial("_header")
+
+<body class="hold-transition login-page">
+    
+    <div class="login-box">
+        <div class="login-logo" style="margin-top: 150px;">
+            <img src="~/Content/img/logo.png" class="img-responsive" style="margin-left: 10px" />
+            <hr />
+            @*<button type="button" ng-click="logoff()" class="btn btn-default btn-block btn-flat">Sign-in my Account</button>*@
+        </div><!-- /.login-logo -->               
+    </div><!-- /.login-box -->
+
+    @Html.Partial("_footer")
+
+    @Scripts.Render("~/bundles/Log")
+
+    <script>
+
+        window.location = "/Account/Login";
+
+    </script>
+
+</body>
+</html>
+

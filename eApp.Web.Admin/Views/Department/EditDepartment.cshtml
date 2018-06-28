@@ -1,0 +1,143 @@
+﻿
+
+
+
+
+<style>
+    pre {
+        font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        border: none;
+        white-space: pre-wrap;
+        background-color: #f9fafc;
+    }
+
+    .clpre {
+        background-color: #f9fafc;
+        border: none;
+        border-left: 1px solid #d2d6de;
+    }
+
+
+    option:empty {
+        display: none;
+    }
+
+    .nNoo {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+</style>
+
+
+
+<div class="row" ng-controller="DepartmentController" id="ddc">
+
+
+    <div class="col-md-9">
+
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <div class="form-group box-title bg-purple" style="padding: 10px 20px 10px 10px; margin-top: -130px; margin-left: -10px; border-bottom-right-radius: 30px">
+                    <h4 class="label no-padding"> Department Information </h4>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="box box-primary">
+
+            <hr />
+
+            <div class="box-body bg-white">
+
+                <div class="col-md-6">
+
+                    <div class="form-group">
+                        <label>Department Code : </label>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa  fa-dot-circle-o"></i></span>
+                            <input type="email" class="form-control validate" value="@ViewBag.Department.deptcode" placeholder="ex. 1010" readonly id="deptcode">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label><small class="">*</small>Department Name : </label>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa  fa-dot-circle-o"></i></span>
+                            <input type="email" class="form-control validate" value="@ViewBag.Department.deptname" placeholder="ex. FACIAL DEPARTMENT" id="deptname">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="form-group">
+                        <label><small class="">*</small>Remarks : </label>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa  fa-dot-circle-o"></i></span>
+                            <input type="email" class="form-control validate" value="@ViewBag.Department.remarks" placeholder="ex. for FACIAL SERVICES" id="remarks">
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        
+            <hr />
+
+            <div class="box-body">
+
+                <div class="col-md-6">
+
+                    <div class="form-group">
+
+                        <button type="button" class="btn btn-default" onclick="angular.element(document.getElementById('ddc')).scope().Process();">Update Department Information</button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <div class="form-group box-title bg-purple" style="padding: 10px 20px 10px 10px; margin-top: -130px; margin-left: -10px; border-bottom-right-radius: 30px">
+                    <h4 class="label no-padding"> Department Image </h4>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="box box-primary">
+
+            <div class="box-body bg-white">
+
+                <div class="col-md-12">
+
+                    <hr />
+
+                    <div class="form-group">
+
+                        <img class="img-responsive img-circle" style="margin-left: auto; margin-right: auto;" src="~/Content/img/product.png" />
+                    </div>
+
+                    <hr />
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+

@@ -1,0 +1,194 @@
+﻿
+<style>
+    pre {
+        font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        border: none;
+        white-space: pre-wrap;
+        background-color: #f9fafc;
+    }
+
+    .clpre {
+        background-color: #f9fafc;
+        border: none;
+        border-left: 1px solid #d2d6de;
+    }
+
+
+    option:empty {
+        display: none;
+    }
+
+    .nNoo {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+</style>
+
+
+
+<div class="row" ng-controller="ServicesController" id="ssc">
+
+    <div class="col-md-7">
+
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <div class="form-group box-title bg-purple" style="padding: 10px 20px 10px 10px; margin-top: -130px; margin-left: -10px; border-bottom-right-radius: 30px">
+                    <h4 class="label no-padding"> List of Services </h4>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="box box-primary">
+
+            <div class="box-body bg-white">
+
+                <input type="hidden" value="@ViewBag.Services.servicescode" id="servicescode" />
+
+                <table id="example" class="table table-bordered table-hover table-striped" width="100%"></table>
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <div class="form-group box-title bg-purple" style="padding: 10px 20px 10px 10px; margin-top: -130px; margin-left: -10px; border-bottom-right-radius: 30px">
+                    <h4 class="label no-padding"> Product Price </h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="box box-primary">
+
+            <div class="box-body bg-white">
+
+                <hr />
+
+                <table class="table table-bordered table-hover table-striped" width="100%">
+                    <thead>
+                        <tr>
+                            <th width="35%">Item Code</th>
+                            <th width="40%">Price</th>
+                        </tr>
+                    </thead>
+                </table>
+
+                <table id="exampleChild00" class="table table-bordered table-hover table-striped" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Item Code</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody class="poes"></tbody>
+                </table>
+
+                <hr />
+                <table class="table table-bordered table-hover table-striped" width="100%">
+                    <thead>
+                        <tr>
+                            <th width="35%">Total Price : </th>
+                            <th width="40%">
+                                <span id="tprice">0.00</span>
+                            </th>
+                        </tr>
+                    </thead>
+                </table>
+
+            </div>
+
+
+            <hr />
+
+            <div class="box-body">
+
+                <div class="col-md-12">
+
+                    <div class="form-group">
+
+                        <button type="button" id="btnser" class="btn btn-default btn-block"> Save Price </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    
+    <div class="col-md-2">
+
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <div class="form-group box-title bg-purple" style="padding: 10px 20px 10px 10px; margin-top: -130px; margin-left: -10px; border-bottom-right-radius: 30px">
+                    <h4 class="label no-padding"> Services Information </h4>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="box box-primary">
+
+            <div class="box-body bg-white">
+
+                <input type="hidden" value="@ViewBag.Services.servicescode" id="servicescode" />
+
+                <div class="form-group">
+
+                    <img class="img-responsive" style="margin-left: auto; margin-right: auto;" src="~/Content/img/services.png" />
+                </div>
+
+                <div class="form-group">
+                    <label>Services Code : </label>
+                    <div class="input-group">
+                        <span>@ViewBag.Services.servicescode</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Services Name : </label>
+                    <div class="input-group">
+                        <span>@ViewBag.Services.servicename</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Services Name : </label>
+                    <div class="input-group">
+                        <span>@ViewBag.Services.description</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    
+</div>
+
+
+@Html.Partial("/Views/_Forms/_Datatable.cshtml")
+
+<script src="~/Scripts/Javascript/plugins/datatables/dataTables.select.min.js"></script>
+<link href="~/Scripts/Javascript/plugins/datatables/select.dataTables.min.css" rel="stylesheet" />
+
+<script src="~/Scripts/Modularize/Admin/Services/iServicesController.js"></script>
+
+<script>
+    $(document).ready(function () {
+
+        iServicesController.initX();
+
+    });
+</script>
+

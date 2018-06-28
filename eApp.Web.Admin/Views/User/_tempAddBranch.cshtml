@@ -1,0 +1,22 @@
+﻿
+
+<input type="hidden" id="userid" value="@ViewBag.userid" />
+<input type="hidden" id="branchcode" value="" />
+
+<table id="exampleD" class="table table-responsive table-bordered table-hover table-striped"></table>
+
+
+@Html.Partial("/Views/_Forms/_Datatable.cshtml")
+<script src="~/Scripts/Javascript/plugins/datatables/dataTables.select.min.js"></script>
+<link href="~/Scripts/Javascript/plugins/datatables/select.dataTables.min.css" rel="stylesheet" />
+
+<script src="~/Scripts/Modularize/User/iUserController.js"></script>
+
+<script>
+    $(document).ready(function () {
+
+        iUserController.initXX(document.getElementById("userid").value);
+
+    });
+</script>
+

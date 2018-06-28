@@ -1,0 +1,32 @@
+﻿
+
+
+<input type="hidden" id="ordercode" value="@ViewBag.ordercode" />
+<input type="hidden" id="itemcode" value="" />
+
+<table id="exampleD" class="table table-responsive table-bordered table-hover table-striped"></table>
+
+<hr />
+
+<div class="form-group" id="qty" style="display: none">
+    <label><small class="">*</small>Quantity : </label>
+    <div class="input-group">
+        <span class="input-group-addon"><i class="fa  fa-dot-circle-o"></i></span>
+        <input type="email" class="form-control validate" id="quantity">
+    </div>
+</div>
+
+@Html.Partial("/Views/_Forms/_Datatable.cshtml")
+<script src="~/Scripts/Javascript/plugins/datatables/dataTables.select.min.js"></script>
+<link href="~/Scripts/Javascript/plugins/datatables/select.dataTables.min.css" rel="stylesheet" />
+
+<script src="~/Scripts/Modularize/Backend/bkBranch/iBranchOrderController.js"></script>
+
+<script>
+    $(document).ready(function () {
+
+        iBranchOrderController.initXX(document.getElementById("ordercode").value);
+
+    });
+</script>
+

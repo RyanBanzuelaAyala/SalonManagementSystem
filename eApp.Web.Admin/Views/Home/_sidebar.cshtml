@@ -1,0 +1,208 @@
+﻿<!-- Left side column. contains te logo and sidebar -->
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+
+        <div class="box box-widget widget-user-2" style="border-radius: 0px">
+            <!-- Add the bg color to the header using any of the bg-* classes -->
+            <div class="widget-user-header bg-purple image">
+                <div class="widget-user-image">
+                    <img src="~/Content/img/user.png" class="img-circle" alt="User Image">
+                </div>
+
+                <h3 class="widget-user-username" style="font-size: 12px; margin-top: 5px">@ViewBag.UserInfo.name</h3>
+                <h5 class="widget-user-username" style="font-size: 10px;"><span>@ViewBag.UserBranch</span></h5>
+                <h5 class="widget-user-username" style="font-size: 10px;"><span>@ViewBag.Role</span></h5>
+
+                <input type="hidden" value="@ViewBag.UserBranchCode" id="brn" />
+
+            </div>
+            <div class="box-footer no-padding">
+
+                @if (ViewBag.Role.Contains("Administrator"))
+                {
+
+                <ul class="sidebar-menu">
+
+                    <li class="header">
+                        <small class="label pull-left bg-purple"> SALON TRANSACTION</small>
+                    </li>
+
+                    <li class="treeview">
+                        <a href="">
+                            <i class="fa fa-file-text-o"></i><span> Transactions </span><span class="heart heartP pull-right"></span><span class="point pointP pull-right"></span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li>
+                                <hr class="nNooX" />
+                                <a href="/ibranch/list">
+                                    <i class="fa fa-minus"></i> Branch Request <span class="fa fa-file-archive-o pull-right"></span>
+                                </a>
+                                <hr class="nNooX" />
+                            </li>
+                            <li>
+                                <hr class="nNooX" />
+                                <a href="/services/list">
+                                    <i class="fa fa-minus"></i> Purchasing Order <span class="fa fa-tasks pull-right"></span>
+                                </a>
+                                <hr class="nNooX" />
+                            </li>
+                            <li>
+                                <hr class="nNooX" />
+                                <a href="/pricing/list">
+                                    <i class="fa fa-minus"></i> Inventory <span class="fa fa-sitemap pull-right"></span>
+                                </a>
+                                <hr class="nNooX" />
+                            </li>
+                            <li>
+                                <hr class="nNooX" />
+                                <a href="/prod/list">
+                                    <i class="fa fa-minus"></i> Item Costing <span class="fa fa-edit pull-right"></span>
+                                </a>
+                                <hr class="nNooX" />
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="header">
+                        <small class="label pull-left bg-purple"> SALON SETTINGS </small>
+                    </li>
+
+                    <li class="treeview">
+                        <a href="">
+                            <i class="fa fa-gear"></i><span> System Settings </span><span class="heart heartP pull-right"></span><span class="point pointP pull-right"></span>
+                        </a>
+                        <ul class="treeview-menu">
+
+                            <li>
+                                <hr class="nNooX" />
+                                <a href="/prod/list">
+                                    <i class="fa fa-minus"></i> Products <span class="fa fa-edit pull-right"></span>
+                                </a>
+                                <hr class="nNooX" />
+                            </li>
+                            <li>
+                                <hr class="nNooX" />
+                                <a href="/pricing/list">
+                                    <i class="fa fa-minus"></i> Pricing <span class="fa fa-clipboard pull-right"></span>
+                                </a>
+                                <hr class="nNooX" />
+                            </li>
+                            <li>
+                                <hr class="nNooX" />
+                                <a href="/services/list">
+                                    <i class="fa fa-minus"></i> Services <span class="fa fa-hand-lizard-o pull-right"></span>
+                                </a>
+                                <hr class="nNooX" />
+                            </li>
+                            <li>
+                                <hr class="nNooX" />
+                                <a href="/department/list">
+                                    <i class="fa fa-minus"></i> Department <span class="fa fa-hdd-o pull-right"></span>
+                                </a>
+                                <hr class="nNooX" />
+                            </li>
+                            <li>
+                                <hr class="nNooX" />
+                                <a href="/branch/list">
+                                    <i class="fa fa-minus"></i> Branch <span class="fa fa-home pull-right"></span>
+                                </a>
+                                <hr class="nNooX" />
+                            </li>
+                        </ul>
+                    </li>
+
+
+                    <li class="header">
+                        <small class="label pull-left bg-purple"> USER SETTINGS</small>
+                    </li>
+
+                    <li class="treeview">
+                        <a href="">
+                            <i class="fa fa-user"></i><span> User Modification </span><span class="heart heartP pull-right"></span><span class="point pointO pull-right"></span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li>
+                                <hr class="nNooX" />
+                                <a href="/user/list">
+                                    <i class="fa fa-minus"></i> Users <span class="fa fa-users pull-right"></span>
+                                </a>
+                                <hr class="nNooX" />
+                            </li>
+                            <li>
+                                <hr class="nNooX" />
+                                <a href="/user/list">
+                                    <i class="fa fa-minus"></i> Customers <span class="fa fa-users pull-right"></span>
+                                </a>
+                                <hr class="nNooX" />
+                            </li>
+
+                        </ul>
+                    </li>
+
+                </ul>
+
+                }
+                else if (ViewBag.Role.Contains("Manager"))
+                {
+
+                <ul class="sidebar-menu">
+
+                    <li class="header">
+                        <small class="label pull-left bg-purple"> BRANCH SERVICES </small>
+                    </li>
+
+                    <li class="treeview">
+                        <a href="/branch/list">
+                            <i class="fa fa-user"></i><span> Services </span><span class="heart heartP pull-right"></span><span class="point pointO pull-right"></span>
+                        </a>
+                    </li>
+
+                    <li class="header">
+                        <small class="label pull-left bg-purple"> BRANCH TRANSATION </small>
+                    </li>
+
+                    <li class="treeview">
+                        <a href="">
+                            <i class="fa fa-user"></i><span> Transaction </span><span class="heart heartP pull-right"></span><span class="point pointO pull-right"></span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li>
+                                <hr class="nNooX" />
+                                <a href="/ibranch/orderlist">
+                                    <i class="fa fa-minus"></i> Branch Order <span class="fa fa-hdd-o pull-right"></span>
+                                </a>
+                                <hr class="nNooX" />
+                                <a href="/user/list">
+                                    <i class="fa fa-minus"></i> Item Stocks <span class="fa fa-sort-amount-desc pull-right"></span>
+                                </a>
+                                <hr class="nNooX" />
+                                <a href="/user/list">
+                                    <i class="fa fa-minus"></i> Insight Sales <span class="fa fa-bar-chart-o pull-right"></span>
+                                </a>
+                                <hr class="nNooX" />
+                            </li>
+
+                        </ul>
+                    </li>
+
+                </ul>
+
+                }
+
+            </div>
+        </div><!-- /.widget-user -->
+
+        <style>
+            .nNooX {
+                margin-top: 2px;
+                margin-bottom: 2px;
+                border-top: none;
+                padding: 1px;
+            }
+        </style>
+
+
+    </section>
+    <!-- /.sidebar -->
+</aside>
